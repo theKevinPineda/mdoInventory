@@ -13,7 +13,6 @@ class Product < ActiveRecord::Base
 
   def self.getAll
     @product = Product.all
-    @product.paginate(:per_page => 8)
   end
   
   private 
