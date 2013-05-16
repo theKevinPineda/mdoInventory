@@ -1,25 +1,21 @@
 <h1>Listing products</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Owner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% for product in @products %>
-  <tr>
-    <td><%= product.name %></td>
+<table id="products" class="display" data-source="<%= products_url(format: "json") %>">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody> 
+  <% for product in @products %>
+    <tr>
+    <td><%= link_to product.name, product %></td>
     <td><%= product.quantity %></td>
     <td><%= product.owner %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
+  </tbody>
 </table>
 <br />
 
