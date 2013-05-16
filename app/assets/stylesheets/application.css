@@ -10,6 +10,7 @@
  *= require_self
  *= require jquery.ui.core
  *= require jquery.ui.theme
+ *= require shadowbox
  *= require dataTables/jquery.dataTables
  *= require_tree .
  */

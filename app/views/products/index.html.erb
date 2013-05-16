@@ -1,5 +1,5 @@
 <h1>Listing products</h1>
-<table id="products" class="display" data-source="<%= products_url(format: "json") %>">
+<table id="products" class="display table table-bordered" data-source="<%= products_url(format: "json") %>">
   <thead>
     <tr>
       <th>Name</th>
@@ -10,7 +10,7 @@
   <tbody> 
   <% for product in @products %>
     <tr>
-    <td><%= link_to product.name, product %></td>
+      <td><%= link_to product.name, product, :rel => 'shadowbox' %></td>
     <td><%= product.quantity %></td>
     <td><%= product.owner %></td>
   </tr>
@@ -19,4 +19,4 @@
 </table>
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to ' New Product', new_product_path, :class => 'btn  icon-plus' %>
