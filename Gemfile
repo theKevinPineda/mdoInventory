@@ -24,6 +24,12 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'devise'
+gem "oauth-plugin", ">= 0.4.0.rc2"
+
+group :test do
+  gem 'rspec-rails'
+end
 gem 'paperclip', '3.1.0'
 gem 'jquery-rails'
 # To use ActiveModel has_secure_password
