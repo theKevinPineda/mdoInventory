@@ -1,9 +1,20 @@
 class ProductsController < ApplicationController
+  layout :resolve_layout
+
+  private
+  def resolve_layout
+    case action_name
+    when 'show'
+      'product'
+    else
+      'application'
+    end
+  end
+  public  
   # GET /products
   # GET /products.json
   def index
     @products = Product.getAll
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
