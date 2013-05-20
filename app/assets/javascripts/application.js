@@ -16,3 +16,11 @@
 //= require dataTables/jquery.dataTables
 //= require shadowbox
 //= require_tree .
+$(document).ready(function() {
+  // Setup drop down menu
+  $('.dropdown-toggle').dropdown();
+  // Fix input element click problem
+  $('.dropdown-menu input form, .dropdown-menu label, #dropdown-form').click(function(e) {
+    e.stopPropagation();
+  });
+});
