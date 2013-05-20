@@ -21,8 +21,12 @@ Shadowbox.init(
       <%= link_to "MDO Inventory", root_path, :class => 'brand' %>
       <div class="nav pull-right">
         <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <ul class= "nav">
+            <li>
+            <a href="#"><%= current_user.username %></a>
+            </li>
+          </ul>   
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class => "btn btn-info" %>
       <% else %>
         <a class="dropdown-toggle btn-inverse btn" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/users/sign_in">
          Sign in
@@ -39,7 +43,7 @@ Shadowbox.init(
             <div><input name="user[remember_me]" type="hidden" value="0"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"> <label for="user_remember_me">Remember me</label></div>
 
             <div><input name="commit" type="submit" value="Sign in"></div>
-            <a href="/users/sign_in">Sign in</a><br>
+            <a href="/users/sign_up">Sign up</a><br>
             <a href="/users/password/new">Forgot your password?</a><br>
           </form>
         </ul>
