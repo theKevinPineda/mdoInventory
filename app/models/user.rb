@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
     :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me,
+    :lastname, :firstname, :contact
   attr_accessor :login
   attr_accessible :login
   # attr_accessible :title, :body
   before_create :create_login
+  validates :contact , :numericality => {:only_integer => true}
 
   def create_login
     email = self.email.split(/@/)

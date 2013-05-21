@@ -23,4 +23,6 @@ $(document).ready(function() {
   $('.dropdown-menu input form, .dropdown-menu label, #dropdown-form').click(function(e) {
     e.stopPropagation();
   });
+  // Allows Only numbers on selected forms
+  $('.numbers-only').regexMask(/^\d+$/);
 });

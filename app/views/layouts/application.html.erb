@@ -23,7 +23,7 @@ Shadowbox.init(
         <% if user_signed_in? %>
           <ul class= "nav">
             <li>
-            <a href="#"><%= current_user.username %></a>
+            <a href="#"><%= current_user.lastname+", "+current_user.firstname %></a>
             </li>
           </ul>   
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class => "btn btn-info" %>
