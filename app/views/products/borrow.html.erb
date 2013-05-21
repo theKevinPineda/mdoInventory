@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>
   <b>Image:</b>
-  <%= image_tag (@product.photo=='/photos/original/missing.png')?'assets/missing.png': @product.photo  %>
+  <%= image_tag ((@product.photo=='/photos/original/missing.png')?'assets/missing.png': @product.photo), :class => "img-polaroid" %>
 </p>
 <p>
   <b>Name:</b>
