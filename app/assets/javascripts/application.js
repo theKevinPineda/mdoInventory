@@ -24,5 +24,7 @@ $(document).ready(function() {
     e.stopPropagation();
   });
   // Allows Only numbers on selected forms
-  $('.numbers-only').regexMask(/^\d+$/);
+  $('.flash').delay(500).fadeIn('normal', function() {
+    $(this).delay(1000).fadeOut();
+  });
 });

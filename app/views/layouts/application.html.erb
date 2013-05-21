@@ -22,14 +22,20 @@ Shadowbox.init(
       <div class="nav pull-right">
         <% if user_signed_in? %>
           <ul class= "nav">
-            <li>
-            <a href="#"><%= current_user.lastname+", "+current_user.firstname %></a>
-            </li>
-          </ul>   
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class => "btn btn-info" %>
+          <li>
+          <a href="#">
+            <% if current_user.lastname.nil? and current_user.firstname.nil? %>
+              <%= current_user.username %>
+          <% else %>
+              <%= current_user.lastname+", "+current_user.firstname %>
+          <% end %>
+          </a>
+          </li>
+        </ul>   
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class => "btn btn-info" %>
       <% else %>
-        <a class="dropdown-toggle btn-inverse btn" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/users/sign_in">
-         Sign in
+          <a class="dropdown-toggle btn-inverse btn" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/users/sign_in">
+          Sign in
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -52,8 +58,11 @@ Shadowbox.init(
     </div>
   </div>
 </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% if notice%>
+  <p class="notice flash"><%= notice %></p>
+<% elsif alert %>
+    <p class="alert flash"><%= alert %></p>
+<% end %>
 <div id="user_nav">
 </div>
 <div class= "container">
