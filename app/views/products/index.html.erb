@@ -10,7 +10,7 @@
   <tbody> 
   <% for product in @products %>
     <tr>
-      <td><%= link_to product.name, product, :rel => 'shadowbox;height=500px;width=300px' %></td>
+      <td><%= link_to product.name, show_borrow_products_path(product) , :rel => 'shadowbox;height=300px;width=300px' %></td>
     <td><%= product.quantity %></td>
     <td><%= product.owner %></td>
   </tr>

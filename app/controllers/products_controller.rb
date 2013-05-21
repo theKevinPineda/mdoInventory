@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   private
   def resolve_layout
     case action_name
-    when 'show'
+    when 'borrow'
       'product'
     else
       'application'
@@ -94,6 +94,22 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /products/1
+  # GET /products/1.json
+  def borrow 
+    begin
+      @product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid product #{params[:id]}"
+      redirect_to products_path, :notice => 'Invalid product'
+    else
+      respond_to do |format|
+        format.html # borrow.html.erb
+        format.json { render json: @product }
+      end
     end
   end
 end

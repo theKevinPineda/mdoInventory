@@ -1,7 +1,11 @@
 MdoInventory::Application.routes.draw do
   devise_for :users
 
-  resources :products
+  resources :products do
+    collection do
+      match ':id/borrow' => 'products#borrow', :via => :get , :as => 'show_borrow'
+    end
+  end
   root :to => "products#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
