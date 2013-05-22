@@ -8,7 +8,7 @@ namespace :db do
 
     Product.populate 100 do |product|
       product.name = Populator.words(1..3).titleize
-      product.owner = Faker::Name.name
+      product.owner = 5
       product.quantity = 1..30
     end
   end

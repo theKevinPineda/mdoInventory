@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   before_create :create_login
   validates :contact , :numericality => {:only_integer => true}
-
+  has_many :products
   def create_login
     email = self.email.split(/@/)
     login_taken = User.where( :username => email[0]).first

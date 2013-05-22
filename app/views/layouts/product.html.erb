@@ -2,12 +2,16 @@
 <html>
 <head>
 
-<title>Fucker</title>
+<title>MdoInventory</title>
 <%= stylesheet_link_tag "bootstrap_and_overrides", "shadowbox_index" %>
 <%= csrf_meta_tags %>
 </head>
 <body class="no-scroll">
-
+<% if notice%>
+  <p class="notice flash"><%= notice %></p>
+<% elsif alert %>
+    <p class="alert flash" data-dismiss="alert"><%= alert %></p>
+<% end %>
 <div class= "container container1">
   <%= yield %>
 </div>

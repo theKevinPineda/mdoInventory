@@ -13,7 +13,7 @@
     <tr>
       <td><%= link_to product.name, show_borrow_products_path(product) , :rel => 'shadowbox;height=300px;width=300px' %></td>
     <td><%= product.quantity %></td>
-    <td><%= product.owner %></td>
+    <td><%= product.user_id %></td>
   </tr>
   <% end %>
   </tbody>

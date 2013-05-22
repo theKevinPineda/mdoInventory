@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   validates :name, :owner, :quantity, :presence => true
   validates :quantity, :numericality => {greater_than: 0}
+  belongs_to :users
   def self.checkElseUpdate product
     @product =  Product.find_by_name(product.name)
     if @product.nil?
