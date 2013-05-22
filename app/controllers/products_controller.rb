@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.joins(:user)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -43,8 +43,13 @@ class ProductsController < ApplicationController
     @product = Product.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
+      if user_signed_in? 
+        format.html # new.html.erb
+        format.json { render json: @product }
+      else
+        format.html { redirect_to root_path, notice:  'Please Sign in' }
+        format.json { render json: @product.errors, status: :please_sign_in }
+      end
     end
   end
 

@@ -58,15 +58,15 @@ Shadowbox.init(
     </div>
   </div>
 </div>
-<% if notice%>
-  <p class="notice flash"><%= notice %></p>
-<% elsif alert %>
-    <p class="alert flash" data-dismiss="alert"><%= alert %></p>
-<% end %>
-<div id="user_nav">
-</div>
 <div class= "container">
-  <%= yield %>
+  <% if notice%>
+    <p class="notice flash"><%= notice %></p>
+
+<%end
+if alert %>
+<p class="alert flash" data-dismiss="alert"><%= alert %></p>
+<% end %>
+<%= yield %>
 </div>
 </body>
 </html>

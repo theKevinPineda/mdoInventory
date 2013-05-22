@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :owner, :quantity, :photo
+  attr_accessible :name, :owner, :quantity, :photo, :user_id
   has_attached_file :photo,
     :default_url => "/assets/missing.gif",
     :url  => "/assets/products/:id/:style/:hash.:extension",
@@ -8,9 +8,9 @@ class Product < ActiveRecord::Base
   validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
-  validates :name, :owner, :quantity, :presence => true
+  validates :name, :user_id, :quantity, :presence => true
   validates :quantity, :numericality => {greater_than: 0}
-  belongs_to :users
+  belongs_to :user
   def self.checkElseUpdate product
     @product =  Product.find_by_name(product.name)
     if @product.nil?

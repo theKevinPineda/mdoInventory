@@ -11,11 +11,17 @@
   <tbody> 
   <% for product in @products %>
     <tr>
-      <td><%= link_to product.name, show_borrow_products_path(product) , :rel => 'shadowbox;height=300px;width=300px' %></td>
+    <td><%= link_to product.name, show_borrow_products_path(product) , :rel => 'shadowbox;height=300px;width=300px' %></td>
     <td><%= product.quantity %></td>
-    <td><%= product.user_id %></td>
+    <td>
+      <% if product.user.lastname.nil? and product.user.firstname.nil? %>
+        <%= product.user.username %>
+    <% else %>
+        <%=product. user.lastname+", "+product.user.firstname %>
+    <% end %>
+    </td>
   </tr>
-  <% end %>
+<% end %>
   </tbody>
 </table>
 <br />

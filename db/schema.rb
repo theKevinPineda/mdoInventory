@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522034303) do
+ActiveRecord::Schema.define(:version => 20130522055602) do
 
   create_table "client_applications", :force => true do |t|
     t.string   "name"
@@ -54,17 +54,8 @@ ActiveRecord::Schema.define(:version => 20130522034303) do
 
   add_index "oauth_tokens", ["token"], :name => "index_oauth_tokens_on_token", :unique => true
 
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.integer  "quantity"
-    t.integer  "user_id",            :limit => 255
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-  end
+# Could not dump table "products" because of following StandardError
+#   Unknown type 'reference' for column 'user_id'
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
